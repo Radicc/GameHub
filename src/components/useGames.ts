@@ -12,6 +12,8 @@ export interface Game {
   short_description: string;
   thumbnail: string;
   title: string;
+  platform: string;
+  genre: string;
 }
 
 const useGames = () => {
