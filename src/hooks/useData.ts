@@ -2,31 +2,21 @@ import { useState, useEffect } from "react";
 import apiClient from "../services/api-client";
 import { CanceledError } from "axios";
 
-export interface Game {
-  developer: string;
-  freetogame_profile_url: string;
-  game_url: string;
-  id: number;
-  publisher: string;
-  release_date: string;
-  short_description: string;
-  thumbnail: string;
-  title: string;
-  platform: string;
-  genre: string;
+export interface Game<T> {
+  results: T[];
 }
 
-const useGames = () => {
-  const [games, setGames] = useState<Game[]>([]);
+const useData = <T>(endpoint: string) => {
+  const [data, setData] = useState<T[]>([]);
   const [error, setError] = useState("");
   const [isLoading, setLoading] = useState(false);
   useEffect(() => {
     const controller = new AbortController();
     setLoading(true);
     apiClient
-      .get("/games", { signal: controller.signal })
+      .get(endpoint, { signal: controller.signal })
       .then((res) => {
-        setGames(res.data);
+        setData(res.data);
         setLoading(false);
       })
       .catch((err) => {
@@ -37,7 +27,7 @@ const useGames = () => {
 
     return () => controller.abort();
   }, []);
-  return { games, error, isLoading };
+  return { data, error, isLoading };
 };
 
-export default useGames;
+export default useData;
