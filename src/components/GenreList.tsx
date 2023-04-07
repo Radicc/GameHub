@@ -12,6 +12,7 @@ import { Button, HStack, Image, List, ListItem, Text } from "@chakra-ui/react";
 
 interface Props {
   onSelectGenre: (genre: string | null) => void;
+  selectedGenre: string | null;
 }
 
 const genres = [
@@ -27,7 +28,7 @@ const genres = [
   { name: "Battle Royale", img: BattleRoyale_img, slag: "battle-royale" },
 ];
 
-const GenreList = ({ onSelectGenre }: Props) => {
+const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
   return (
     <List>
       {genres.map((genre) => (
@@ -35,6 +36,7 @@ const GenreList = ({ onSelectGenre }: Props) => {
           <HStack>
             <Image borderRadius={8} boxSize="40px" src={genre.img} />
             <Button
+              fontWeight={genre.slag === selectedGenre ? "bold" : "normal"}
               onClick={() => onSelectGenre(genre.slag)}
               fontSize="lg"
               variant="link"
