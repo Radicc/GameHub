@@ -21,6 +21,11 @@ const useData = <T>(
       apiClient
         .get(endpoint, { signal: controller.signal, ...requestConfig })
         .then((res) => {
+          console.log(res);
+          if (res.data.status === 0) {
+            setLoading(false);
+            return;
+          }
           setData(res.data);
           setLoading(false);
         })
