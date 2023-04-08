@@ -23,6 +23,7 @@ const useGames = (gameQuery: GameQuery) =>
         category: gameQuery.genre,
         platform: gameQuery.platform,
         "sort-by": gameQuery.order,
+        search: gameQuery.searchText,
       },
     },
     [gameQuery]
