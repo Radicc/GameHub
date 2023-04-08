@@ -19,11 +19,15 @@ const useData = <T>(
       const controller = new AbortController();
       setLoading(true);
       apiClient
-        .get(endpoint, { signal: controller.signal, ...requestConfig })
+        .get(endpoint, {
+          signal: controller.signal,
+          ...requestConfig,
+        })
         .then((res) => {
           console.log(res);
           if (res.data.status === 0) {
             setLoading(false);
+            setData([]);
             return;
           }
           setData(res.data);

@@ -3,20 +3,25 @@ import { BsChevronDown } from "react-icons/bs";
 
 interface Props {
   onSelectedPlatform: (platform: string) => void;
-  selectedPlatform: string | null;
+  selectedPlatform: string;
 }
 
 const genres = [
-  { id: 1, name: "ALL", slag: "all" },
-  { id: 2, name: "PC", slag: "pc" },
-  { id: 3, name: "BROWSER", slag: "browser" },
+  { id: 1, name: "All", slag: "all" },
+  { id: 2, name: "Pc", slag: "pc" },
+  { id: 3, name: "Browser", slag: "browser" },
 ];
+
+const handleUpperCase = (data: string) => {
+  const newData = data ? data.charAt(0).toUpperCase() + data.slice(1) : "";
+  return newData || "All";
+};
 
 const PlatformSelector = ({ onSelectedPlatform, selectedPlatform }: Props) => {
   return (
     <Menu>
       <MenuButton as={Button} rightIcon={<BsChevronDown />}>
-        {selectedPlatform?.toUpperCase() || "Platforms"}
+        Platform: {handleUpperCase(selectedPlatform)}
       </MenuButton>
       <MenuList>
         {genres.map((platform) => (
