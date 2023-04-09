@@ -1,6 +1,14 @@
 import { useState } from "react";
 import "./index.css";
-import { Box, Flex, Grid, GridItem, HStack, Show } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Grid,
+  GridItem,
+  HStack,
+  Show,
+  useColorModeValue,
+} from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
@@ -13,13 +21,14 @@ export interface GameQuery {
   platform: string;
   order: string;
   searchText: string;
+  color: string;
 }
 
 function App() {
   const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
-
   return (
     <Grid
+      bg={useColorModeValue("gray.100", "")}
       templateAreas={{
         base: `"nav" "main"`,
         lg: `"nav nav" "aside main"`,
