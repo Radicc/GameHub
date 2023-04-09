@@ -9,15 +9,10 @@ interface Props {
 }
 const IconCombine = () => {
   return (
-    <span
-      style={{
-        display: "flex",
-        flexDirection: "row",
-      }}
-    >
+    <HStack>
       <FaWindows />
       <BsBrowserChrome />
-    </span>
+    </HStack>
   );
 };
 
