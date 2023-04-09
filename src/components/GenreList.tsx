@@ -8,7 +8,15 @@ import Fighting_img from "../assets/Geners Images/FIGHTING.jpg";
 import Social_img from "../assets/Geners Images/SOCIAL.jpg";
 import Sports_img from "../assets/Geners Images/SPORTS.jpg";
 import BattleRoyale_img from "../assets/Geners Images/BATTLEROYALE.jpg";
-import { Button, HStack, Image, List, ListItem, Text } from "@chakra-ui/react";
+import {
+  Button,
+  HStack,
+  Heading,
+  Image,
+  List,
+  ListItem,
+  Text,
+} from "@chakra-ui/react";
 
 interface Props {
   onSelectGenre: (genre: string | null) => void;
@@ -20,7 +28,7 @@ const genres = [
   { name: "MOBA", img: MOBA_img, slag: "moba" },
   { name: "Shooter", img: Shooter_img, slag: "shooter" },
   { name: "Strategy", img: Strategy_img, slag: "strategy" },
-  { name: "Card Game", img: CardGame_img, slag: "card" },
+  { name: "CardGame", img: CardGame_img, slag: "card" },
   { name: "Fighting", img: Fighting_img, slag: "fighting" },
   { name: "Racing", img: Racing_img, slag: "racing" },
   { name: "Social", img: Social_img, slag: "social" },
@@ -30,23 +38,33 @@ const genres = [
 
 const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
   return (
-    <List>
-      {genres.map((genre) => (
-        <ListItem paddingY="5px" key={genre.name}>
-          <HStack>
-            <Image borderRadius={8} boxSize="40px" src={genre.img} />
-            <Button
-              fontWeight={genre.slag === selectedGenre ? "bold" : "normal"}
-              onClick={() => onSelectGenre(genre.slag)}
-              fontSize="lg"
-              variant="link"
-            >
-              {genre.name}
-            </Button>
-          </HStack>
-        </ListItem>
-      ))}
-    </List>
+    <>
+      <Heading fontSize="2xl" marginBottom={3}>
+        Genres
+      </Heading>
+      <List>
+        {genres.map((genre) => (
+          <ListItem paddingY="5px" key={genre.name}>
+            <HStack>
+              <Image
+                objectFit="cover"
+                borderRadius={8}
+                boxSize="40px"
+                src={genre.img}
+              />
+              <Button
+                fontWeight={genre.slag === selectedGenre ? "bold" : "normal"}
+                onClick={() => onSelectGenre(genre.slag)}
+                fontSize="lg"
+                variant="link"
+              >
+                {genre.name}
+              </Button>
+            </HStack>
+          </ListItem>
+        ))}
+      </List>
+    </>
   );
 };
 
