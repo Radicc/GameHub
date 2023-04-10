@@ -8,6 +8,7 @@ import Fighting_img from "../assets/Geners Images/FIGHTING.jpg";
 import Social_img from "../assets/Geners Images/SOCIAL.jpg";
 import Sports_img from "../assets/Geners Images/SPORTS.jpg";
 import BattleRoyale_img from "../assets/Geners Images/BATTLEROYALE.jpg";
+import Anime_img from "../assets/Geners Images/anime.png";
 import {
   Button,
   HStack,
@@ -34,6 +35,7 @@ const genres = [
   { name: "Social", img: Social_img, slag: "social" },
   { name: "Sports", img: Sports_img, slag: "sports" },
   { name: "Battle Royale", img: BattleRoyale_img, slag: "battle-royale" },
+  { name: "Anime", img: Anime_img, slag: "anime" },
 ];
 
 const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
