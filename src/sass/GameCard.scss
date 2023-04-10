@@ -11,3 +11,18 @@
     scale: 1;
   }
 }
+.cardContaienr {
+  &:hover {
+    animation: HoverIN 0.5s ease forwards;
+
+    filter: drop-shadow(0 -1mm 2mm gray);
+  }
+}
+@keyframes HoverIN {
+  0% {
+    scale: 1;
+  }
+  100% {
+    scale: 1.05;
+  }
+}

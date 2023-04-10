@@ -15,6 +15,8 @@ import PlatformSelector from "./components/PlatformSelector";
 import SortSelector from "./components/SortSelector";
 import GameHeading from "./components/GameHeading";
 import { toggle } from "./components/GameGrid";
+import { BsChevronDown } from "react-icons/bs";
+import GenreListMobile from "./components/GenreListMobile";
 
 export interface GameQuery {
   genre: string | null;
@@ -31,7 +33,7 @@ function App() {
   return (
     <>
       <Grid
-        bg={useColorModeValue("gray.100", "")}
+        bg={useColorModeValue("gray.50", "")}
         templateAreas={{
           base: `"nav" "main"`,
           lg: `"nav nav" "aside main"`,
@@ -48,6 +50,7 @@ function App() {
             }
           />
         </GridItem>
+
         <Show above="lg">
           <GridItem paddingX={5} area="aside">
             <GenreList
@@ -60,6 +63,18 @@ function App() {
         <GridItem area="main">
           <Box>
             <GameHeading gameQuery={gameQuery} />
+
+            <Show below="lg">
+              <GridItem>
+                <GenreListMobile
+                  onSelectGenre={(genre) =>
+                    setGameQuery({ ...gameQuery, genre })
+                  }
+                  selectedGenre={gameQuery.genre}
+                />
+              </GridItem>
+            </Show>
+
             <Flex gap={2} paddingLeft={[2, 5]}>
               <PlatformSelector
                 selectedPlatform={gameQuery.platform}
