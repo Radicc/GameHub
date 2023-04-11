@@ -1,5 +1,6 @@
 import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
+import handleUpperCase from "./handleUpperCase";
 
 interface Props {
   onSelectSortOrder: (sortOrder: string) => void;
@@ -13,11 +14,6 @@ const SortSelector = ({ onSelectSortOrder, order }: Props) => {
     { value: "release-date", name: "Realease Date" },
     { value: "alphabetical", name: "Alphabetical " },
   ];
-
-  const handleUpperCase = (data: string) => {
-    const newData = data ? data.charAt(0).toUpperCase() + data.slice(1) : "";
-    return newData || "Relevance";
-  };
 
   return (
     <Menu>

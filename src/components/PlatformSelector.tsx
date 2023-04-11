@@ -7,6 +7,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
+import handleUpperCase from "./handleUpperCase";
 
 interface Props {
   onSelectedPlatform: (platform: string) => void;
@@ -19,16 +20,11 @@ const genres = [
   { id: 3, name: "Browser", slag: "browser" },
 ];
 
-const handleUpperCase = (data: string) => {
-  const newData = data ? data.charAt(0).toUpperCase() + data.slice(1) : "";
-  return newData || "All";
-};
-
 const PlatformSelector = ({ onSelectedPlatform, selectedPlatform }: Props) => {
   return (
     <Menu>
       <MenuButton as={Button} rightIcon={<BsChevronDown />}>
-        Platform: {handleUpperCase(selectedPlatform)}
+        Platform: {handleUpperCase(selectedPlatform) || "All"}
       </MenuButton>
       <MenuList>
         {genres.map((platform) => (
