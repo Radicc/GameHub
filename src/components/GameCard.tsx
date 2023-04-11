@@ -24,7 +24,7 @@ const GameCard = ({ game }: Props) => {
   return (
     <Card
       className="cardHover"
-      h={"420px"}
+      h={["", "420px"]}
       onClick={() => window.open(game.game_url, "_blank")}
       bg={useColorModeValue("gray.150", "")}
       cursor={"pointer"}

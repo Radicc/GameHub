@@ -16,6 +16,7 @@ import {
   Image,
   List,
   ListItem,
+  MenuItem,
   Text,
 } from "@chakra-ui/react";
 
@@ -24,7 +25,7 @@ interface Props {
   selectedGenre: string | null;
 }
 
-const genres = [
+export const genres = [
   { name: "RPG", img: MMOARPG_img, slag: "mmorpg" },
   { name: "MOBA", img: MOBA_img, slag: "moba" },
   { name: "Shooter", img: Shooter_img, slag: "shooter" },
@@ -46,7 +47,7 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
       </Heading>
       <List>
         {genres.map((genre) => (
-          <ListItem paddingY="5px" key={genre.name}>
+          <MenuItem paddingY="5px" key={genre.name}>
             <HStack>
               <Image
                 objectFit="cover"
@@ -63,7 +64,7 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
                 {genre.name}
               </Button>
             </HStack>
-          </ListItem>
+          </MenuItem>
         ))}
       </List>
     </>
