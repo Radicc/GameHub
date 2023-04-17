@@ -5,7 +5,9 @@ interface Props {
   gameQuery: GameQuery;
 }
 const GameHeading = ({ gameQuery }: Props) => {
-  const heading = `${gameQuery.platform || ""} ${gameQuery.genre || ""} Games`;
+  const heading = `${gameQuery.platform || "All"} ${
+    gameQuery.genre || ""
+  } Games`;
   return (
     <Heading paddingLeft={[2, 5]} as="h1" marginY={5}>
       {heading.toUpperCase()}

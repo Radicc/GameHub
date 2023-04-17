@@ -6,8 +6,6 @@ import {
   Image,
   List,
   ListItem,
-  MenuItem,
-  Text,
 } from "@chakra-ui/react";
 
 interface Props {

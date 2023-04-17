@@ -5,6 +5,7 @@ import {
   Flex,
   Grid,
   GridItem,
+  HStack,
   Show,
   useColorModeValue,
 } from "@chakra-ui/react";
@@ -17,6 +18,7 @@ import GameHeading from "./components/GameHeading";
 import { toggle } from "./components/GameGrid";
 import { BsChevronDown } from "react-icons/bs";
 import GenreListMobile from "./components/GenreListMobile";
+import ResetFilters from "./components/ResetFilters";
 
 export interface GameQuery {
   genre: string | null;
@@ -30,6 +32,8 @@ export interface GameQuery {
 function App() {
   const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
 
+  console.log(gameQuery.order);
+  console.log(gameQuery.platform);
   return (
     <>
       <Grid
@@ -65,14 +69,24 @@ function App() {
             <GameHeading gameQuery={gameQuery} />
 
             <Show below="lg">
-              <GridItem padding={2}>
-                <GenreListMobile
-                  onSelectGenre={(genre) =>
-                    setGameQuery({ ...gameQuery, genre })
-                  }
-                  selectedGenre={gameQuery.genre}
-                />
-              </GridItem>
+              <HStack>
+                <GridItem padding={2}>
+                  <GenreListMobile
+                    onSelectGenre={(genre) =>
+                      setGameQuery({ ...gameQuery, genre })
+                    }
+                    selectedGenre={gameQuery.genre}
+                  />
+                </GridItem>
+
+                {(gameQuery.genre || gameQuery.order || gameQuery.platform) && (
+                  <ResetFilters
+                    onSelectedPlatform={(platform, order, genre) =>
+                      setGameQuery({ ...gameQuery, platform, order, genre })
+                    }
+                  />
+                )}
+              </HStack>
             </Show>
 
             <Flex gap={2} paddingLeft={[2, 5]}>
@@ -89,6 +103,15 @@ function App() {
                   setGameQuery({ ...gameQuery, order })
                 }
               />
+              <Show above="lg">
+                {(gameQuery.genre || gameQuery.order || gameQuery.platform) && (
+                  <ResetFilters
+                    onSelectedPlatform={(platform, order, genre) =>
+                      setGameQuery({ ...gameQuery, platform, order, genre })
+                    }
+                  />
+                )}
+              </Show>
             </Flex>
 
             <GameGrid gameQuery={gameQuery} />
