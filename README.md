@@ -1,6 +1,6 @@
-GameHub
+GameHub - https://radicc.github.io/GameHub/
 
-Game-Hub with free-to-play games. You can find here more than 300+ games of different genres. Filter games and find out your fit.
+Welcome to our Free to Play game hub! Here you can search for and discover a wide variety of games that are completely free to play. Use our filters to narrow down your search by genre or platform. Whether you’re looking for action-packed adventures or relaxing puzzle games, we’ve got you covered. Start exploring now and find your next favorite game!
 
 HTML , ChakraUI, TypeScript, React
 
