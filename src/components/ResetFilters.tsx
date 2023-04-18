@@ -4,8 +4,8 @@ import genres from "./GenreExport";
 import { color } from "framer-motion";
 interface Props {
   onSelectedPlatform: (
-    platform: string,
-    order: string,
+    platform: string | null,
+    order: string | null,
     genre: string | null
   ) => void;
 }
@@ -18,7 +18,7 @@ const ResetFilters = ({ onSelectedPlatform }: Props) => {
         margin={2.5}
         boxSize="20px"
         onClick={() => {
-          onSelectedPlatform("all", "relevance", null);
+          onSelectedPlatform(null, null, null);
         }}
       />
     </>

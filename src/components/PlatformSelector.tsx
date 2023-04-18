@@ -11,7 +11,7 @@ import handleUpperCase from "./handleUpperCase";
 
 interface Props {
   onSelectedPlatform: (platform: string) => void;
-  selectedPlatform: string;
+  selectedPlatform: string | null;
 }
 
 const genres = [

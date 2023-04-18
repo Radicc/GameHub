@@ -22,8 +22,8 @@ import ResetFilters from "./components/ResetFilters";
 
 export interface GameQuery {
   genre: string | null;
-  platform: string;
-  order: string;
+  platform: string | null;
+  order: string | null;
   searchText: string;
   color: string;
   id: number;

@@ -4,7 +4,7 @@ import handleUpperCase from "./handleUpperCase";
 
 interface Props {
   onSelectSortOrder: (sortOrder: string) => void;
-  order: string;
+  order: string | null;
 }
 
 const SortSelector = ({ onSelectSortOrder, order }: Props) => {
